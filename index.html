@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <header>
+        <title>Rock Paper Scissors Game</title>
+    </header>
+    <body>
+        <button onclick="
+            playerMove = 'Rock'
+            generateComputerMove();
+            checkWinner('Scissors', 'Paper');
+        ">Rock</button>
+
+        <button onclick="
+            playerMove = 'Paper';
+            generateComputerMove();
+            checkWinner('Rock', 'Scissors');
+        ">Paper</button>
+
+        <Button onclick="
+            playerMove = 'Scissors';
+            generateComputerMove();
+            checkWinner('Paper', 'Rock');
+        ">Scissors</Button>
+    </body>
+    <script>
+        let playerMove = '';
+        let computerMove = '';
+
+        function generateComputerMove() {
+            const randomNumber = Math.random();
+            
+            if (randomNumber < 1/3) {
+                computerMove = 'Rock';
+            } else if (randomNumber < 2/3) {
+                computerMove = 'Paper';
+            } else {
+                computerMove = 'Scissors';
+            }
+        }
+
+        function checkWinner(winMove, lossMove) {
+            if (computerMove === winMove) {
+                console.log('You Won!');
+            } else if (computerMove === lossMove) {
+                console.log('You Lose..');
+            } else {
+                console.log('You Tie..');
+            }
+        }
+    </script>
+</html>
