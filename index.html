@@ -2,37 +2,95 @@
     <html>
         <head>
             <title>Rock Paper Scissors Game</title>
+            <style>
+                body {
+                    background-color: rgb(19, 19, 19);
+                }
+
+                div {
+                    display: flex;
+                    justify-content: center;
+                    gap: 10px;
+                    margin-top: 20px;
+                }
+
+                p {
+                    color: white;
+                    text-align: center;
+                    font-size: large;
+                }
+
+                button {
+                    border: none;
+                    background-color: rgb(106, 81, 129);
+                    color: white;   
+                    padding-top: 10px;
+                    padding-bottom: 10px;
+                    padding-left: 15px;
+                    padding-right: 15px;
+                    font-weight: bold;
+                    border-radius: 100px;
+                    cursor: pointer;
+                    display: block;
+                    margin: 0;
+                }
+
+                .js-stats {
+                    background-color: rgb(54, 54, 138);
+                    border-radius: 5px;
+                }
+
+                .js-moves {
+                    background-color: rgb(39, 157, 118);
+                    border-radius: 5px;
+                }
+
+                .reset-stats-button {
+                    background-color: brown;
+                    margin: auto;
+                }
+            </style>
         </head>
         <body>
-            <button onclick="
-                playerMove = 'Rock'
-                generateComputerMove();
-                checkWinner('Scissors', 'Paper');
-            ">Rock</button>
+            <div>
+                <button onclick="
+                    playerMove = 'Rock'
+                    generateComputerMove();
+                    checkWinner('Scissors', 'Paper');
+                ">Rock</button>
 
-            <button onclick="
-                playerMove = 'Paper';
-                generateComputerMove();
-                checkWinner('Rock', 'Scissors');
-            ">Paper</button>
+                <button onclick="
+                    playerMove = 'Paper';
+                    generateComputerMove();
+                    checkWinner('Rock', 'Scissors');
+                ">Paper</button>
 
-            <Button onclick="
-                playerMove = 'Scissors';
-                generateComputerMove();
-                checkWinner('Paper', 'Rock');
-            ">Scissors</Button>
+                <Button onclick="
+                    playerMove = 'Scissors';
+                    generateComputerMove();
+                    checkWinner('Paper', 'Rock');
+                ">Scissors</Button>
+            </div>
 
-            <p class="js-moves"></p>
+            <div>
+                <button class="js-stats"></button>
+            </div>
 
-            <p class="js-stats"></p>
-            <button onclick="
-                gameStats.winCount = 0;
-                gameStats.tieCount = 0;
-                gameStats.lossCount = 0;
+            <div>
+                <button class="js-moves"></button>
+            </div> 
 
-                document.querySelector('.js-stats').innerHTML = `Wins: ${gameStats.winCount} - Losses: ${gameStats.lossCount} - Ties: ${gameStats.tieCount}`;
-                localStorage.setItem('gameStatsLocalStorage', JSON.stringify(gameStats));
-            ">Reset Stats</button>
+            <div>
+                <button class = "reset-stats-button" onclick="
+                    gameStats.winCount = 0;
+                    gameStats.tieCount = 0;
+                    gameStats.lossCount = 0;
+
+                    document.querySelector('.js-stats').innerHTML = `Wins: ${gameStats.winCount} - Losses: ${gameStats.lossCount} - Ties: ${gameStats.tieCount}`;
+                    localStorage.setItem('gameStatsLocalStorage', JSON.stringify(gameStats));
+                    document.querySelector('.js-moves').innerHTML = 'You: - Computer:';
+                ">Reset Stats</button>
+            </div>
         </body>
         <script>
             let playerMove = '';
@@ -47,6 +105,8 @@
                     lossCount: 0
                 }
             }
+
+            document.querySelector('.js-moves').innerHTML = 'You: - Computer:';
 
             document.querySelector('.js-stats').innerHTML = `Wins: ${gameStats.winCount} - Losses: ${gameStats.lossCount} - Ties: ${gameStats.tieCount}`;
 
