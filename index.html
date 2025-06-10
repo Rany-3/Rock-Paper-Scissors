@@ -21,6 +21,16 @@
                 generateComputerMove();
                 checkWinner('Paper', 'Rock');
             ">Scissors</Button>
+
+            <p class="js-stats"></p>
+            <button onclick="
+                gameStats.winCount = 0;
+                gameStats.tieCount = 0;
+                gameStats.lossCount = 0;
+
+                document.querySelector('.js-stats').innerHTML = `Wins: ${gameStats.winCount} Losses: ${gameStats.lossCount} Ties: ${gameStats.tieCount}`;
+                localStorage.setItem('gameStatsLocalStorage', JSON.stringify(gameStats));
+            ">Reset Stats</button>
         </body>
         <script>
             let playerMove = '';
@@ -35,6 +45,8 @@
                     lossCount: 0
                 }
             }
+
+            document.querySelector('.js-stats').innerHTML = `Wins: ${gameStats.winCount} Losses: ${gameStats.lossCount} Ties: ${gameStats.tieCount}`;
 
             function generateComputerMove() {
                 const randomNumber = Math.random();
@@ -61,7 +73,8 @@
                     result = 'Tie';
                     gameStats.tieCount += 1;
                 }
-
+                
+                document.querySelector('.js-stats').innerHTML = `Wins: ${gameStats.winCount} Losses: ${gameStats.lossCount} Ties: ${gameStats.tieCount}`;
                 localStorage.setItem('gameStatsLocalStorage', JSON.stringify(gameStats));
             }
         </script>
