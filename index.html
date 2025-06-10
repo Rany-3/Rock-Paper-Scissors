@@ -22,13 +22,15 @@
                 checkWinner('Paper', 'Rock');
             ">Scissors</Button>
 
+            <p class="js-moves"></p>
+
             <p class="js-stats"></p>
             <button onclick="
                 gameStats.winCount = 0;
                 gameStats.tieCount = 0;
                 gameStats.lossCount = 0;
 
-                document.querySelector('.js-stats').innerHTML = `Wins: ${gameStats.winCount} Losses: ${gameStats.lossCount} Ties: ${gameStats.tieCount}`;
+                document.querySelector('.js-stats').innerHTML = `Wins: ${gameStats.winCount} - Losses: ${gameStats.lossCount} - Ties: ${gameStats.tieCount}`;
                 localStorage.setItem('gameStatsLocalStorage', JSON.stringify(gameStats));
             ">Reset Stats</button>
         </body>
@@ -74,7 +76,8 @@
                     gameStats.tieCount += 1;
                 }
                 
-                document.querySelector('.js-stats').innerHTML = `Wins: ${gameStats.winCount} Losses: ${gameStats.lossCount} Ties: ${gameStats.tieCount}`;
+                document.querySelector('.js-moves').innerHTML = `You: ${playerMove} / Computer: ${computerMove}`;
+                document.querySelector('.js-stats').innerHTML = `Wins: ${gameStats.winCount} - Losses: ${gameStats.lossCount} - Ties: ${gameStats.tieCount}`;
                 localStorage.setItem('gameStatsLocalStorage', JSON.stringify(gameStats));
             }
         </script>
